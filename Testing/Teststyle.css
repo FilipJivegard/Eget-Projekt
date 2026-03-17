@@ -1,0 +1,350 @@
+/* ===========================
+   ===========================
+   MENU & NAVIGATION
+   ===========================
+   =========================== */
+.profile-pic {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    top: 13px;
+    border: 2px solid white;
+    object-fit: cover;
+}
+
+.menu-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 20px;
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.menu {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+    padding: 15px 40px;
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-radius: 999px;
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.25),
+        inset 0 1px 1px rgba(255, 255, 255, 0.25);
+}
+
+.menu li {
+    margin: 0;
+}
+
+.menu a {
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    font-weight: 500;
+    padding: 8px 14px;
+    border-radius: 999px;
+    transition: background 0.2s ease;
+}
+
+.menu a:hover {
+    background: rgba(255, 255, 255, 0.18);
+}
+
+/* ===========================
+   HERO SECTION
+   =========================== */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-start;
+    padding: 150px 80px 80px;
+}
+
+.hero-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: center;
+}
+
+/* Hero Image */
+.hero-image {
+    position: relative;
+}
+
+.hero-image img {
+    width: 100%;
+    max-width: 480px;
+    border-radius: 24px;
+    object-fit: cover;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.25);
+}
+
+/* Cool detalj bakom bilden */
+.hero-image::before {
+    content: "";
+    position: absolute;
+    inset: -20px;
+    background: linear-gradient(
+        135deg,
+        rgba(0,0,0,0.08),
+        rgba(0,0,0,0)
+    );
+    border-radius: 32px;
+    z-index: -1;
+}
+
+/* Hero Text */
+.hero-text h1 {
+    font-size: clamp(2.5rem, 4vw, 4rem);
+    margin-bottom: 1rem;
+}
+
+.hero-text p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    max-width: 480px;
+}
+
+/* ===========================
+   GLASS BANNER / SPINNING LOGO
+   =========================== */
+.glass-banner {
+    width: 100%;
+    height: 160px;
+    margin-top: -280px;
+    overflow: hidden;
+    display: flex;
+    position: relative;
+    align-items: center;
+    backdrop-filter: blur(10px);
+    background: rgba(212, 212, 212, 0.2);
+    border-top: 1px solid rgba(212, 212, 212, 0.2);
+}
+
+.logo-track {
+    display: flex;
+    gap: 50px;
+    width: max-content;
+    will-change: transform;
+}
+
+.logo-track img {
+    height: 140px;
+    width: 400px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+/* ===========================
+   PORTFOLIO SECTION
+   =========================== */
+.portfolio-section {
+    max-width: 1200px;
+    width: 100%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 6rem; /* Mellan varje segment */
+    width: 100%;
+    background: 135deg, #fdfcfb, #1B263B; /* Soft lyxig ton */
+    padding: 50px 130px;
+}
+
+/* Portfolio Items - bild/text */
+.portfolio-item {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+}
+
+/* Varannan item tvärtom */
+.portfolio-item:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+/* Text */
+.portfolio-text {
+    flex: 1;
+}
+
+.portfolio-text h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.portfolio-text p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+/* Bild / flera bilder */
+.portfolio-image {
+    flex: 1;
+    display: grid;
+    gap: 1.5rem;
+}
+
+.portfolio-image img {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 24px;
+    object-fit: cover;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+}
+
+/* Två bilder i samma item */
+.portfolio-image.two-images {
+    grid-template-columns: 1fr 1fr;
+}
+
+/* ===========================
+   FULL-WIDTH "OM MIG"
+   =========================== */
+/* Basstil */
+.about-section {
+  width: 100%;
+  background-color: #ffffff;
+  padding: 120px 0;
+}
+
+.about-inner {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  grid-template-rows: auto 1fr;
+  gap: 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: start;
+}
+
+.about-text {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+}
+
+.about-images {
+  grid-column: 2 / 3;
+  grid-row: 1 / 3;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 20px;
+}
+
+.about-images img:nth-child(1) {
+  grid-column: 1 / 3;
+  grid-row: 1 / 2;
+}
+
+.about-images img:nth-child(2) {
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+}
+
+.about-images img:nth-child(3) {
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+}
+
+.about-images img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+
+/* ===========================
+   BODY / GENERAL
+   =========================== */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: radial-gradient(circle top left, #FDFCFB, #D8D1C4);
+
+}
+
+.section-divider {
+  width: 100%;
+  max-width: 1200px;
+  height: 1px;
+  margin: 60px auto;
+  background-color: rgba(0, 0, 0, 0.12);
+}
+
+/* ===========================
+   FOOTER
+   =========================== */
+
+footer {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  color: #ffffff;
+}
+
+footer .footer-accent {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.9rem;
+  color: #ffffff;
+}
+.footer-accent a {
+  color: #FFD700;
+  text-decoration: none;
+  opacity: 0.9;
+}
+
+.footer-accent a:hover {
+  color: #FFD700;
+  opacity: 1;
+  text-decoration: underline;
+}
+
+
+.site-footer {
+  background-color: #000000;
+  color: #fff;
+  padding: 40px 20px;
+}
+
+.footer-inner {
+  max-width: 1200px;
+  color: #ffffff;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: left;
+}
+
+.footer-nav {
+  display: flex;
+  gap: 24px;
+}
+
+.footer-nav a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 0.95rem;
+  opacity: 0.8;
+}
+
+.footer-nav a:hover {
+  opacity: 1;
+}
+
