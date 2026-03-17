@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Golfboll Dashboard</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="golf-style.css">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+<div class="container">
+<h1 style="text-align: center;">Golfboll Dashboard</h1>
+<br>
+
+<div class="grid grid-2">
+
+<div class="card">
+<h3>Datum för rundan</h3>
+<input type="date" id="roundDate" required>
+
+<h2>Logga boll</h2>
+<form id="ballForm">
+
+<select id="course" required>
+  <option value="Lunds Akademiska" selected>Lunds Akademiska</option>
+  <option value="Kävlige GK">Kävlinge GK</option>
+  <option value="Värpinge GK">Värpinge GK</option>
+</select>
+
+<select id="hole">
+<option value="">Välj hål</option>
+</select>
+
+<select id="shotType">
+<option>Drive</option>
+<option>Järn 5</option>
+<option>Järn 6</option>
+<option>Järn 7</option>
+<option>Järn 8</option>
+<option>Järn 9</option>
+<option>Pitch</option>
+<option>Wedge 50°</option>
+<option>Wedge 56°</option>
+<option>Wedge 60°</option>
+</select>
+
+<select id="cause">
+<option>Vatten</option>
+<option>Out of bounds</option>
+<option>Skog</option>
+<option>Ruff</option>
+<option>Annat</option>
+</select>
+
+<h3>Välj bolltyp</h3>
+<div class="ball-selector" id="ballSelector">
+  <img src="img/Titleist.png" alt="Titleist" data-type="Titleist">
+  <img src="img/Srixon.png" alt="Srixon" data-type="Srixon">
+  <img src="img/Callaway.png" alt="Callaway" data-type="Callaway">
+  <img src="img/Taylormade.png" alt="Taylormade" data-type="Taylormade">
+  <img src="img/Wilson.png" alt="Wilson" data-type="Wilson">
+  <img src="img/Topflite.png" alt="Topflite" data-type="Topflite">
+</div>
+<input type="hidden" id="ballType">
+
+<textarea id="note" placeholder="Anteckning"></textarea>
+
+<button class="btn-primary" type="submit">Lägg till boll</button>
+</form>
+</div>
+
+<div class="card stats-card">
+  <h2>Översikt</h2>
+  <div class="grid stats-grid" id="stats"></div>
+  <br>
+  <button class="btn-danger" id="clearAll">Rensa all data</button>
+</div>
+
+</div>
+
+<div class="card" style="margin-top:1.5rem;">
+<h2>Alla rundor</h2>
+<div id="tableContainer"></div>
+</div>
+
+<div class="grid grid-2" style="margin-top:1.5rem;">
+  <div class="card"><canvas id="holeChart"></canvas></div>
+  <div class="card"><canvas id="causeChart"></canvas></div>
+  <div class="card"><canvas id="ballsPerTypeChart"></canvas></div>
+  <div class="card" style="grid-column:1/-1;"><canvas id="trendChart"></canvas></div>
+</div>
+
+</div>
+
+<div class="toast" id="toast">Sparad</div>
+
+<script src="golf.js"></script>
+</body>
+</html>

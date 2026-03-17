@@ -1,0 +1,140 @@
+:root {
+  --bg: #0D1B13;            /* mörkgrön bakgrund */
+  --card: #16261E;          /* djup kortgrön */
+  --accent: #C5A059;        /* diskret guld som accent */
+  --accent-hover: #F5F5F1;  /* lite mörkare guld vid hover */
+  --text: #f5f3e7;          /* mjuk ljus text */
+  --muted: #bfbfa3;         /* diskret text/muted */
+  --danger: #b22222;        /* vinröd för radera/varning */
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg); /* fallback-färg */
+  background-image: url(img/bakgrundsbild.png); /* byt till din bild */
+  background-repeat: repeat-y; /* upprepar bilden både horisontellt och vertikalt */
+  background-size: 100% auto; /* behåll originalstorlek, kan ändras till cover om du vill */
+  background-position: top left;
+  color: var(--text);
+}
+
+h1, h2, h3 { margin: 0 0 1rem 0; font-weight: 600; }
+
+.container { max-width: 1200px; margin: auto; padding: 2rem 1rem; }
+
+.card {
+  background: var(--card);
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  transition: 0.2s ease;
+  border: 3px solid #BBAE8C;
+}
+
+.total-number {
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(#D0BE8E)
+}
+.stats-grid div {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  text-align: left;
+}
+
+.stat-value {
+  margin-top: 0.3rem;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(#D0BE8E)
+}
+.card.stats-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* sprider innehåll vertikalt */
+  height: 400px; /* valfri höjd för kortet */
+}
+
+#clearAll {
+  align-self: center; /* centrerar horisontellt */
+  margin-bottom: 1rem; /* avstånd från nederkant */
+}
+
+.card:hover { transform: translateY(-4px); box-shadow: 0 15px 40px rgba(0,0,0,0.5); }
+
+.grid { display: grid; gap: 1.5rem; }
+.grid-2 { grid-template-columns: repeat(auto-fit, minmax(300px,1fr)); }
+.stats-grid { grid-template-columns: repeat(auto-fit, minmax(180px,1fr)); }
+
+form { display: grid; gap: 1rem; }
+
+input, select, textarea {
+  width: 100%;
+  padding: 0.7rem;
+  border-radius: 10px;
+  border: none;
+  background: #0f1a2e;
+  color: var(--text);
+  font-family: inherit;
+}
+
+textarea { resize: vertical; min-height: 80px; }
+
+button {
+  padding: 0.8rem 1rem;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.2s ease;
+}
+
+.btn-primary { background: var(--accent); color: white; }
+.btn-primary:hover { background: var(--accent-hover); transform: scale(1.03); }
+.btn-danger { background: var(--danger); color: white; }
+.btn-danger:hover { opacity: 0.9; }
+
+table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+th, td { padding: 0.6rem; text-align:left; border-bottom: 1px solid #334155; }
+th { color: var(--muted); font-weight:500; }
+.empty-state { text-align:center; color: var(--muted); padding:2rem 0; }
+
+.toast {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: var(--accent);
+  padding: 0.8rem 1rem;
+  border-radius: 10px;
+  opacity:0;
+  transform: translateY(20px);
+  transition: 0.3s ease;
+}
+.toast.show { opacity:1; transform: translateY(0); }
+
+.ball-selector { display:flex; gap:0.5rem; flex-wrap:wrap; }
+.ball-selector img {
+  width: 79px; height:79px;
+  border-radius: 50%;
+  cursor:pointer;
+  border: 2px solid transparent;
+  transition:0.2s ease;
+}
+.ball-selector img.selected { border: 2px solid var(--accent); transform: scale(1.1); }
+
+/* Collapsible rundor */
+.round-card { margin-bottom:1rem; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.3); overflow:hidden; }
+.round-toggle {
+  width:100%; padding:0.5rem 1rem; background:#2a4d2a; color:#fff; font-weight:bold;
+  border:none; cursor:pointer; text-align:left;
+}
+.round-balls { background:#1f3a1f; }
+.round-balls table { width:100%; border-collapse:collapse; }
+.round-balls th, .round-balls td { padding:0.3rem 0.5rem; border-bottom:1px solid #555; }
+.round-balls button { background:#8b0000; color:#fff; border:none; padding:0.2rem 0.5rem; cursor:pointer; border-radius:4px; }
+
+@media(max-width:768px){ .container{ padding:1rem; } }
