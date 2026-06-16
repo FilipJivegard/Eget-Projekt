@@ -348,3 +348,86 @@ footer .footer-accent {
   opacity: 1;
 }
 
+.showcase {
+    max-width: 1200px;
+    margin: 100px auto;
+    text-align: center;
+}
+
+.slider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+
+.slides {
+    width: 800px;
+    overflow: visible;
+    max-height: 600px;
+}
+
+.slide {
+    display: none;
+}
+
+.slide.active {
+    display: block;
+}
+
+.slide-image-scroll {
+    height: 550px;
+    overflow-y: scroll;
+    border-radius: 20px;
+}
+
+.slide-image-scroll img {
+    width: 100%;
+    display: block;
+}
+
+.arrow {
+    width: 60px;
+    height: 60px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 24px;
+}
+.category-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 2rem;
+}
+
+.tab {
+    padding: 10px 28px;
+    border-radius: 999px;
+    border: 1px solid rgba(0,0,0,0.2);
+    background: transparent;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.tab.active {
+    background: #000000;
+    color: #ffffff;
+    border-color: #000000;
+}
+
+.tab:hover:not(.active) {
+    background: rgba(0,0,0,0.06);
+}
+.slide[data-category="ads"] .slide-image-scroll {
+    height: 600px;
+    overflow-y: visible;
+    display: flex;
+    justify-content: center;
+}
+
+.slide[data-category="ads"] .slide-image-scroll img {
+    width: 70%;
+    height: auto;
+}

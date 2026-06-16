@@ -1,10 +1,9 @@
-//Banner scroll
+// Banner scroll
 const track = document.querySelector('.logo-track');
 
 window.addEventListener('scroll', () => {
-  const scrollY = window.scrollY;
-
-  track.style.transform = `translateX(${-scrollY * 0.4}px)`;
+    const scrollY = window.scrollY;
+    track.style.transform = `translateX(${-scrollY * 0.4}px)`;
 });
 
 let lastScrollY = window.scrollY;
@@ -12,37 +11,77 @@ const menuBar = document.querySelector('.menu-bar');
 
 window.addEventListener('scroll', () => {
     if (window.scrollY > lastScrollY) {
-        // Scrollar ner -> göm menyn
         menuBar.style.transform = 'translateY(-120%)';
     } else {
-        // Scrollar upp -> visa menyn
         menuBar.style.transform = 'translateY(0)';
     }
     lastScrollY = window.scrollY;
 });
 
-// Preview pannel 
- const items = document.querySelectorAll('.portfolio-item');
-const portfolioImage = document.getElementById('portfolio-image');
+// Karusell
+const allSlides = document.querySelectorAll(".slide");
+const nextBtn = document.querySelector(".next");
+const prevBtn = document.querySelector(".prev");
+const tabs = document.querySelectorAll(".tab");
 
-items.forEach(item => {
-  const header = item.querySelector('.portfolio-header');
+let currentCategory = "email";
+let current = 0;
 
-  header.addEventListener('click', () => {
-    const isOpen = item.classList.contains('open');
+function getVisibleSlides() {
+    return [...allSlides].filter(s => s.dataset.category === currentCategory);
+}
 
-    // Stäng alla
-    items.forEach(i => i.classList.remove('open'));
-
-    if (!isOpen) {
-      // Öppna den klickade
-      item.classList.add('open');
-
-      // Byt bild
-      const newImage = item.dataset.image;
-      if (newImage) {
-        portfolioImage.src = newImage;
-      }
+function showSlide(index) {
+    const visible = getVisibleSlides();
+    allSlides.forEach(s => s.classList.remove("active"));
+    if (visible[index]) {
+        visible[index].classList.add("active");
     }
-  });
+}
+
+nextBtn.addEventListener("click", () => {
+    const visible = getVisibleSlides();
+    current++;
+    if (current >= visible.length) current = 0;
+    showSlide(current);
+});
+
+prevBtn.addEventListener("click", () => {
+    const visible = getVisibleSlides();
+    current--;
+    if (current < 0) current = visible.length - 1;
+    showSlide(current);
+});
+
+tabs.forEach(tab => {
+    tab.addEventListener("click", () => {
+        tabs.forEach(t => t.classList.remove("active"));
+        tab.classList.add("active");
+        currentCategory = tab.dataset.category;
+        current = 0;
+        showSlide(current);
+    });
+});
+
+showSlide(current);
+tabs.forEach(tab => {
+    const category = tab.dataset.category;
+    const count = [...allSlides].filter(s => s.dataset.category === category).length;
+    tab.innerHTML = `${tab.textContent} <span style="opacity: 0.5; font-size: 13px;">${count}</span>`;
+});
+
+const showcase = document.querySelector('.showcase');
+
+//  Meny försvinner vid eget projekt
+window.addEventListener('scroll', () => {
+    const showcaseTop = showcase.getBoundingClientRect().top;
+    const showcaseBottom = showcase.getBoundingClientRect().bottom;
+
+    if (showcaseTop < 200 && showcaseBottom > 0) {
+        menuBar.style.opacity = '0';
+        menuBar.style.pointerEvents = 'none';
+    } else {
+        menuBar.style.opacity = '1';
+        menuBar.style.pointerEvents = 'auto';
+    }
 });
