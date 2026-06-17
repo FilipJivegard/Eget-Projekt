@@ -85,3 +85,24 @@ window.addEventListener('scroll', () => {
         menuBar.style.pointerEvents = 'auto';
     }
 });
+
+  // Lyssna på när muspekaren rör sig över skärmen
+  document.addEventListener('mousemove', function(e) {
+    // Skapa ett nytt div-element för denna punkt i spåret
+    const dot = document.createElement('div');
+    dot.className = 'trail-dot';
+    
+    // Placera punkten exakt där muspekaren befinner sig
+    // Vi drar av 3 pixlar (hälften av bredden/höjden på 6px) för att centrera den under pennspetsen
+    dot.style.left = (e.clientX - 3) + 'px';
+    dot.style.top = (e.clientY - 3) + 'px';
+    
+    // Lägg till punkten på hemsidan
+    document.body.appendChild(dot);
+    
+    // Ta bort elementet helt från koden efter 2500ms (2.5 sekunder) 
+    // så att hemsidan inte blir seg av för mycket gammal kod
+    setTimeout(() => {
+      dot.remove();
+    }, 2500);
+  });
