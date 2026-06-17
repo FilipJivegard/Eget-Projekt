@@ -211,11 +211,7 @@
    FULL-WIDTH "OM MIG"
    =========================== */
 /* Basstil */
-.about-section {
-  width: 100%;
-  background-color: #ffffff;
-  padding: 120px 0;
-}
+
 
 .about-inner {
   display: grid;
@@ -272,12 +268,35 @@ html {
     scroll-behavior: smooth;
 }
 
+
 body {
   margin: 0;
   padding: 0;
-  height: 100%;
-  background: radial-gradient(circle top left, #FDFCFB, #D8D1C4);
+  color: #D7E3F4;
+  min-height: 100vh;
+  background-attachment: fixed;
 
+  h1, h2, h3{
+  color: #F8F5F0;
+}
+b{
+  color: #FFC83D;
+}
+  /* Den klassiska djupa blueprint-blåa färgen som bas */
+  background-color: #1a4175; 
+
+  /* Skapar rutmönstret med vita, halvtransparenta linjer */
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.12) 1px, transparent 1px),
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+
+  /* Storleken på rutorna. De stora rutorna är 100px och de små är 20px */
+  background-size: 100px 100px, 100px 100px, 20px 20px, 20px 20px;
+  
+  /* Centrerar mönstret så det ser symmetriskt ut */
+  background-position: -1px -1px, -1px -1px, -1px -1px, -1px -1px;
 }
 
 .section-divider {
@@ -430,4 +449,77 @@ footer .footer-accent {
 .slide[data-category="ads"] .slide-image-scroll img {
     width: 70%;
     height: auto;
+}
+
+/* Styling för varje enskild partikel i spåret */
+.trail-dot {
+  position: fixed;
+  width: 6px;               /* Hur tjockt pennspåret ska vara */
+  height: 6px;
+  background-color: #ffd700; /* Färgen på spåret (matchar din gula penna) */
+  border-radius: 50%;       /* Gör spåret runt (ta bort denna rad om du vill ha fyrkantigt bläck) */
+  pointer-events: none;     /* Gör att spåret inte blockerar klick på knappar/länkar */
+  z-index: 9999;            /* Lägger spåret längst fram */
+  opacity: 0.8;
+  
+  /* Animationen som pågår i 2.5 sekunder innan partikeln tas bort */
+  animation: fadeOut 2.5s ease-out forwards;
+}
+
+@keyframes fadeOut {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(0.2); /* Spåret blir mindre... */
+    opacity: 0;            /* ...och tonar ut helt till osynligt */
+  }
+}
+
+/* Ändrar muspekaren för hela webbplatsen */
+html, body {
+cursor: url('/Testing/images/penna.png') 5 30, auto;
+}
+
+/* Behåll den klassiska klick-handen för länkar, knappar och canvas-ytan */
+a, button, #paintTrail {
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   PROJECT SHOWCASE & SLIDER (FLIKAR)
+   ========================================================================== */
+.category-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 15px;              /* Skapar ett skönt mellanrum mellan knapparna */
+    margin-bottom: 0.5rem;   /* MINSKAT AVSTÅND: Drar upp allt innehåll nedanför */
+}
+
+.tab {
+    padding: 10px 28px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.25); /* Tydlig, ljus ram mot blått */
+    background: transparent;
+    color: #f1f5f9;         /* Ljus, läsbar text på inaktiva knappar */
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+/* AKTIV FLIK - Din nya sköna, lugnare gula färg */
+.tab.active {
+    background: #FFC83D;        
+    color: #1a4175;             /* Mörkblå text för optimal kontrast */
+    border-color: #FFC83D;
+    box-shadow: 0 4px 15px rgba(255, 200, 61, 0.25); /* Mjuk gul glöd */
+}
+
+/* HOVER - När pennan dras över inaktiva flikar */
+.tab:hover:not(.active) {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.4);
+    color: #ffffff;
 }
