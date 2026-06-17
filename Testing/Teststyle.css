@@ -479,7 +479,7 @@ footer .footer-accent {
 
 /* Ändrar muspekaren för hela webbplatsen */
 html, body {
-cursor: url('./Testing/images/penna.png') 5 30, auto;
+cursor: url('./images/penna.png') 5 30, auto;
 }
 
 /* Behåll den klassiska klick-handen för länkar, knappar och canvas-ytan */
