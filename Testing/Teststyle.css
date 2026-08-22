@@ -57,6 +57,110 @@
 }
 
 /* ===========================
+   LANGUAGE SWITCH (SV / EN)
+   =========================== */
+.lang-switch {
+    position: absolute;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-radius: 999px 0 0 999px;
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.25),
+        inset 0 1px 1px rgba(255, 255, 255, 0.25);
+}
+
+.lang-btn {
+    position: relative;
+    background: none;
+    border: none;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.02em;
+    color: rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+    padding: 4px 6px 8px;
+    transition: color 0.2s ease;
+}
+
+.lang-btn:hover {
+    color: rgba(0, 0, 0, 0.75);
+}
+
+.lang-btn.active {
+    color: #000000;
+}
+
+/* Gul/blå accent-rand under SV-knappen */
+.lang-btn-sv::after {
+    content: "";
+    position: absolute;
+    left: 4px;
+    right: 4px;
+    bottom: 0;
+    height: 3px;
+    border-radius: 2px;
+    background: linear-gradient(
+        90deg,
+        #006AA7 0%,
+        #006AA7 50%,
+        #FECC02 51%,
+        #FECC02 100%
+    );
+    opacity: 0.5;
+    transition: opacity 0.2s ease;
+}
+
+.lang-btn-sv.active::after,
+.lang-btn-sv:hover::after {
+    opacity: 1;
+}
+
+/* Röd/vit/blå accent-rand under EN-knappen */
+.lang-btn-en::after {
+content: "";
+    position: absolute;
+    left: 4px;
+    right: 4px;
+    bottom: 0;
+    height: 3px;
+    border-radius: 2px;
+    background: linear-gradient(
+        90deg,
+        #012169 0%,
+        #012169 25%,
+        #ffffff 25%,
+        #ffffff 35%,
+        #C8102E 35%,
+        #C8102E 65%,
+        #ffffff 65%,
+        #ffffff 75%,
+        #012169 75%,
+        #012169 100%
+    );
+    opacity: 0.5;
+    transition: opacity 0.2s ease;
+}
+
+.lang-btn-en.active::after,
+.lang-btn-en:hover::after {
+    opacity: 1;
+}
+
+.lang-sep {
+    color: rgba(0, 0, 0, 0.25);
+    font-size: 12px;
+}
+
+/* ===========================
    HERO SECTION
    =========================== */
 .hero {
@@ -547,6 +651,16 @@ a, button, #paintTrail {
     .menu a {
         padding: 6px 10px;
         font-size: 14px;
+    }
+
+    .lang-switch {
+        right: 10px;
+        padding: 6px 10px;
+        gap: 6px;
+    }
+
+    .lang-btn {
+        font-size: 12px;
     }
 
     /* Hero-sektion: stapla bild ovanpå text */
